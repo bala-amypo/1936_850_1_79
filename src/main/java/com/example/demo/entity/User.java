@@ -18,7 +18,6 @@ public class User {
 
     private String role;
 
-    // ===== GETTERS & SETTERS =====
 
     public Long getId() {
         return id;
