@@ -1,11 +1,9 @@
 package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
+import com.example.demo.entity.Location;
+import java.util.List;
 
-@Service
-public class LocationService {
-
-    public String test() {
-        return "Location Service Working";
-    }
+public interface LocationService {
+    Location createLocation(Location location);
+    List<Location> getAllLocations();
 }

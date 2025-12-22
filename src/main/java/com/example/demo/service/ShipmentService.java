@@ -1,11 +1,8 @@
 package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
+import com.example.demo.entity.Shipment;
 
-@Service
-public class ShipmentService {
-
-    public String test() {
-        return "Shipment Service Working";
-    }
+public interface ShipmentService {
+    Shipment createShipment(Long vehicleId, Shipment shipment);
+    Shipment getShipment(Long shipmentId);
 }
