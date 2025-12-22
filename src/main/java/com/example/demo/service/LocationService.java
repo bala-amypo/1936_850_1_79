@@ -1,13 +1,11 @@
-package com.example.demo.service.impl;
+package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
-import com.example.demo.service.LocationService;
+import com.example.demo.entity.Location;
+import java.util.List;
 
-@Service   // ⭐ VERY IMPORTANT
-public class LocationServiceImpl implements LocationService {
+public interface LocationService {
 
-    @Override
-    public void createLocation() {
-        System.out.println("Location created");
-    }
+    Location createLocation(Location location);
+
+    List<Location> getAllLocations();
 }
