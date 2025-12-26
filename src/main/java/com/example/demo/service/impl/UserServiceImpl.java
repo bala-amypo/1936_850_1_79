@@ -5,15 +5,12 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
-@Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    // ⚠️ MUST MATCH TEST
     public UserServiceImpl(UserRepository userRepository,
                            PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -36,7 +33,7 @@ public class UserServiceImpl implements UserService {
                         new ResourceNotFoundException("User not found"));
     }
 
-    @Override
+    // ❗ NOT in interface → NO @Override
     public User findById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() ->
