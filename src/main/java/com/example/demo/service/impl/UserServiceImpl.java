@@ -5,7 +5,9 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;   // ✅ ADD THIS
 
+@Service   // ✅ THIS IS THE FIX
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -33,7 +35,7 @@ public class UserServiceImpl implements UserService {
                         new ResourceNotFoundException("User not found"));
     }
 
-    // ❗ NOT in interface → NO @Override
+    // ❗ Not part of interface → no @Override (correct)
     public User findById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() ->
