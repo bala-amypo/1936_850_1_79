@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "location")
 public class Location {
 
     @Id
@@ -13,41 +14,51 @@ public class Location {
     private Double latitude;
     private Double longitude;
 
-    // Default constructor (required by JPA)
-    public Location() {
+    public Location() {}
+
+    // ===== BUILDER =====
+    public static Builder builder() {
+        return new Builder();
     }
 
-    // Getters and Setters
+    public static class Builder {
+        private final Location l = new Location();
 
-    public Long getId() {
-        return id;
+        public Builder id(Long id) {
+            l.setId(id);
+            return this;
+        }
+
+        public Builder name(String name) {
+            l.setName(name);
+            return this;
+        }
+
+        public Builder latitude(Double latitude) {
+            l.setLatitude(latitude);
+            return this;
+        }
+
+        public Builder longitude(Double longitude) {
+            l.setLongitude(longitude);
+            return this;
+        }
+
+        public Location build() {
+            return l;
+        }
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // ===== getters & setters =====
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public Double getLatitude() { return latitude; }
+    public void setLatitude(Double latitude) { this.latitude = latitude; }
 
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
+    public Double getLongitude() { return longitude; }
+    public void setLongitude(Double longitude) { this.longitude = longitude; }
 }
