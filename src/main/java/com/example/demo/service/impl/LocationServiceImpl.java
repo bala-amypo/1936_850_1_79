@@ -12,12 +12,16 @@ public class LocationServiceImpl implements LocationService {
 
     private final LocationRepository locationRepository;
 
+    // ⚠️ MUST MATCH TEST
     public LocationServiceImpl(LocationRepository locationRepository) {
         this.locationRepository = locationRepository;
     }
 
     @Override
     public Location createLocation(Location location) {
+        if (location.getLatitude() < -90 || location.getLatitude() > 90) {
+            throw new IllegalArgumentException("Invalid latitude");
+        }
         return locationRepository.save(location);
     }
 
