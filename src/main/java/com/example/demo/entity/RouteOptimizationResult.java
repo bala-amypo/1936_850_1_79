@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "route_optimization_result")
 public class RouteOptimizationResult {
 
     @Id
@@ -15,34 +14,50 @@ public class RouteOptimizationResult {
     private Shipment shipment;
 
     private Double optimizedDistanceKm;
-    private Double estimatedFuelUsageL;
+
+    private Double estimatedFuelUsage;
 
     private LocalDateTime generatedAt;
 
-    public RouteOptimizationResult() {}
+    // -------- getters & setters --------
 
-    @PrePersist
-    public void onCreate() {
-        this.generatedAt = LocalDateTime.now();
+    public Long getId() {
+        return id;
     }
 
-    // ===== BUILDER =====
-    public static Builder builder() {
-        return new Builder();
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public static class Builder {
-        private final RouteOptimizationResult r = new RouteOptimizationResult();
+    public Shipment getShipment() {
+        return shipment;
+    }
 
-        public Builder id(Long id) {
-            r.setId(id);
-            return this;
-        }
+    public void setShipment(Shipment shipment) {
+        this.shipment = shipment;
+    }
 
-        public Builder shipment(Shipment shipment) {
-            r.setShipment(shipment);
-            return this;
-        }
+    public Double getOptimizedDistanceKm() {
+        return optimizedDistanceKm;
+    }
 
-        public Builder optimizedDistanceKm(Double optimizedDistanceKm) {
-            r.setOptimizedDistance
+    public void setOptimizedDistanceKm(Double optimizedDistanceKm) {
+        this.optimizedDistanceKm = optimizedDistanceKm;
+    }
+
+    public Double getEstimatedFuelUsage() {
+        return estimatedFuelUsage;
+    }
+
+    public void setEstimatedFuelUsage(Double estimatedFuelUsage) {
+        this.estimatedFuelUsage = estimatedFuelUsage;
+    }
+
+    public LocalDateTime getGeneratedAt() {
+        return generatedAt;
+    }
+
+    public void setGeneratedAt(LocalDateTime generatedAt) {
+        this.generatedAt = generatedAt;
+    }
+}
