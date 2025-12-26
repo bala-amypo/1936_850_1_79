@@ -15,11 +15,11 @@ public class RouteOptimizationResult {
 
     private Double optimizedDistanceKm;
 
-    private Double estimatedFuelUsage;
+    private Double estimatedFuelUsageL;
 
     private LocalDateTime generatedAt;
 
-    // -------- getters & setters --------
+    // ---------- getters & setters ----------
 
     public Long getId() {
         return id;
@@ -45,12 +45,12 @@ public class RouteOptimizationResult {
         this.optimizedDistanceKm = optimizedDistanceKm;
     }
 
-    public Double getEstimatedFuelUsage() {
-        return estimatedFuelUsage;
+    public Double getEstimatedFuelUsageL() {
+        return estimatedFuelUsageL;
     }
 
-    public void setEstimatedFuelUsage(Double estimatedFuelUsage) {
-        this.estimatedFuelUsage = estimatedFuelUsage;
+    public void setEstimatedFuelUsageL(Double estimatedFuelUsageL) {
+        this.estimatedFuelUsageL = estimatedFuelUsageL;
     }
 
     public LocalDateTime getGeneratedAt() {
@@ -59,5 +59,44 @@ public class RouteOptimizationResult {
 
     public void setGeneratedAt(LocalDateTime generatedAt) {
         this.generatedAt = generatedAt;
+    }
+
+    // ---------- MANUAL BUILDER (IMPORTANT) ----------
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private final RouteOptimizationResult r = new RouteOptimizationResult();
+
+        public Builder id(Long id) {
+            r.setId(id);
+            return this;
+        }
+
+        public Builder shipment(Shipment shipment) {
+            r.setShipment(shipment);
+            return this;
+        }
+
+        public Builder optimizedDistanceKm(Double d) {
+            r.setOptimizedDistanceKm(d);
+            return this;
+        }
+
+        public Builder estimatedFuelUsageL(Double f) {
+            r.setEstimatedFuelUsageL(f);
+            return this;
+        }
+
+        public Builder generatedAt(LocalDateTime t) {
+            r.setGeneratedAt(t);
+            return this;
+        }
+
+        public RouteOptimizationResult build() {
+            return r;
+        }
     }
 }
